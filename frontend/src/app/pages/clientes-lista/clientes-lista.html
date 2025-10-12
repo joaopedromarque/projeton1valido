@@ -1,0 +1,30 @@
+<div class="card">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <h2 style="margin:0">Clientes</h2>
+    <button (click)="novo()">+ Novo Cliente</button>
+  </div>
+
+  <div *ngIf="carregando" style="margin-top:10px;color:var(--muted)">Carregando...</div>
+
+  <table class="table" *ngIf="!carregando && clientes.length">
+    <thead>
+      <tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th><th style="width:160px">Ações</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of clientes">
+        <td>{{ c.id }}</td>
+        <td>{{ c.nome }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.telefone }}</td>
+        <td>
+          <button class="secondary" (click)="editar(c)">Editar</button>
+          <button class="danger" (click)="remover(c)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!carregando && !clientes.length" style="margin-top:12px;color:var(--muted)">
+    Nenhum cliente cadastrado.
+  </p>
+</div>

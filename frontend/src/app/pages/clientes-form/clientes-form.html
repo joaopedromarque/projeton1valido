@@ -1,0 +1,19 @@
+<div class="card" style="max-width:640px">
+  <h2 style="margin:0 0 8px">{{ idEdicao ? 'Editar Cliente' : 'Novo Cliente' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <label>Nome</label>
+    <input formControlName="nome" placeholder="Fulano da Silva" class="inp"/>
+
+    <label>Email</label>
+    <input formControlName="email" type="email" placeholder="fulano@email.com" class="inp"/>
+
+    <label>Telefone</label>
+    <input formControlName="telefone" placeholder="(62) 99999-0000" class="inp"/>
+
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button type="submit" [disabled]="form.invalid">Salvar</button>
+      <button type="button" class="secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
